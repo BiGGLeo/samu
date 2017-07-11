@@ -10,7 +10,6 @@ import {SamuService} from './services/samu.service'
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-
   providers:[UFService,SamuService]
 })
 export class AppComponent implements OnInit {
@@ -18,8 +17,8 @@ export class AppComponent implements OnInit {
     cabecalho = '';
     uf_id = '';
     area= '';
+    valores: Dados[];
     mediaAtendidos = 0;
-    anoQtdmunicipios: number[];
     ufs : UF[];
     dados_da_samu : Dados[];
 
@@ -31,9 +30,13 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
         this.ufs = this.ufService.getAll();
         this.dados_da_samu = this.samuService.getAllMunicipiosAtendidosPorEstado();
+
+
         this.usarTitulo();
+        
         this.criarDetail();
-        this.criarMaster();
+        this.valores = this.samuService.criarMaster();
+
     }
 
     usarTitulo(): void{
@@ -65,16 +68,7 @@ export class AppComponent implements OnInit {
         this.mediaAtendidos = this.mediaAtendidos/i;
       }
 
-
-    }
-    criarMaster(): void
-    {
-        for(let Dados of this.dados_da_samu)
-        {
-          if(Dados.uf_id==29) this.anoQtdmunicipios.push(Dados);
-        }
-
     }
 
 
-}
+    }

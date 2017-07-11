@@ -4,12 +4,9 @@
 <h1>{{title}}</h1>
 <details>
     <h3>ID:{{uf_id}}</h3>
-    <h3>Área: {{area}}</h3>
+    <h3>Área: {{area}} Km²</h3>
     <h3>Média de municípios atendidos: {{mediaAtendidos}}</h3>
+
   </details>
-</div>
-<div class="master">
-  <ul>
-    <li *ngFor="let ano for anos">{{ano}}</li>
-  </ul>
+      <li *ngFor="let valor of valores"><span class='ano'>{{valor.ano}}</span> {{valor.valor}}<li>
 </div>
