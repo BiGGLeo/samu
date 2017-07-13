@@ -10,14 +10,29 @@ export class SamuService {
 
 
   }
-  criarMaster(): Dados[]
+
+  getMedia(id: number): number{
+      let i= 0;
+      let totalAtendidos = 0;
+      for(let Dados of VALORES)
+      {
+          if(Dados.uf_id == id)
+          {
+            totalAtendidos += Dados.valor;
+            i++;
+          }
+      }
+      return (totalAtendidos/i);
+    }
+
+  getValores(id: number): Dados[]
   {
       let valores: Dados[]=[];
       for(let dados of VALORES)
       {
-        if(dados.uf_id == 29)
+        if(dados.uf_id == id)
           {
-            
+
             valores.push(dados);
           }
 

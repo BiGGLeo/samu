@@ -15,6 +15,7 @@ import {SamuService} from './services/samu.service'
 export class AppComponent implements OnInit {
     title = 'app';
     cabecalho = '';
+    id = 29;
     uf_id = '';
     area= '';
     valores: Dados[];
@@ -31,44 +32,18 @@ export class AppComponent implements OnInit {
         this.ufs = this.ufService.getAll();
         this.dados_da_samu = this.samuService.getAllMunicipiosAtendidosPorEstado();
 
+        //Começa aqui, na real
 
-        this.usarTitulo();
-        
-        this.criarDetail();
-        this.valores = this.samuService.criarMaster();
-
-    }
-
-    usarTitulo(): void{
-      for(let uf of this.ufs){
-        if (uf.id == 29) this.title = uf.nome;
-      }
+        this.title = this.ufService.getTitulo(this.id);
+        this.uf_id = this.ufService.getID(this.id);
+        this.area = this.ufService.getArea(this.id);
+        this.valores = this.samuService.getValores(this.id);
 
     }
 
-    criarDetail(): void
-    {
-      for(let uf of this.ufs)
-      {
-        if(uf.id == 29)
-        {
-          this.uf_id = String(uf.id);
-          this.area = String(uf.area);
 
-        }
-        let i= 0
-        for(let Dados of this.dados_da_samu)
-        {
-            if(Dados.uf_id==29)
-            {
-              this.mediaAtendidos += Dados.valor;
-              i++;
-            }
-        }
-        this.mediaAtendidos = this.mediaAtendidos/i;
-      }
 
-    }
+
 
 
     }
