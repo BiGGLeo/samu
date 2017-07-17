@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+import { Dados } from '../types/samu';
 import { UF } from '../types/uf';
 import { UFs } from './mock-ufs';
 
@@ -9,28 +10,15 @@ export class UFService {
     return UFs;
   }
 
-getTitulo(id: number): string{
-    for(let uf of UFs){
-      if (uf.id == id) return uf.nome;
-    }
-
-  }
-
-getID(id: number): string
+  getPorID(id: number): UF
   {
-    for(let uf of UFs)
+    var uf: UF;
+    for(let i of UFs)
     {
-      if(uf.id == id) return String(uf.id);
+      if(i.id==id) return uf = i;
     }
   }
 
-  getArea(id: number): string
-  {
-    for(let uf of UFs)
-      {
-        if(uf.id == id) return String(uf.area);
-      }
-  }
 
 
 
