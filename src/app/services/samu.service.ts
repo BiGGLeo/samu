@@ -29,7 +29,7 @@ export class SamuService {
 
     getPorUFMunicipiosAtendidosPorEstado(uf:UF): Dados[]
     {
-      var municipios: Dados[] = []
+      var municipios: Dados[] = [];
       for(let i of VALORES)
       {
         if(i.uf_id == uf.id)

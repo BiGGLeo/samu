@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import {UF} from '../types/uf';
-import {UFService} from '../services/uf.service'
+import {UF} from './types/uf';
+import {UFService} from './services/uf.service'
 
-import {Dados} from '../types/samu';
-import {SamuService} from '../services/samu.service'
+import {Dados} from './types/samu';
+import {SamuService} from './services/samu.service'
 
 @Component({
   selector: 'resumo',
@@ -12,7 +12,7 @@ import {SamuService} from '../services/samu.service'
   //SE DER FRESCURA RETIRE ESSA ANOTAÇÃO >>> styleUrls: ['./app.component.css'],
   providers:[UFService,SamuService]
 })
-export class AppComponent implements OnInit {
+export class ResumoComponent implements OnInit {
     title = 'app';
     cabecalho =   '';
     id = 29;
@@ -37,8 +37,7 @@ export class AppComponent implements OnInit {
         this.title = this.ufService.getPorID(this.id).nome;
         this.uf_id = String(this.ufService.getPorID(this.id).id);
         this.area = String(this.ufService.getPorID(this.id).area);
-
-        //Esse vai para detalhes  this.valores = this.samuService.getValores(this.id);
+        this.mediaAtendidos = this.samuService.getMedia(this.id);
 
     }
 
