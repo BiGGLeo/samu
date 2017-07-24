@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 import {UF} from './types/uf';
-import {UFService} from './services/uf.service'
+import {UFService} from './services/uf.service';
+import {AllService} from './services/all';
 
 import {Dados} from './types/samu';
-import {SamuService} from './services/samu.service'
+import {SamuService} from './services/samu.service';
+import {AllDados} from './types/allDados'
 
 @Component({
   selector: 'all',
@@ -17,12 +19,12 @@ export class AllComponent implements OnInit {
     uf_id = '';
     area= '';
     minha_UF: UF;
-    valores: Dados[];
+    valores: AllDados[];
     mediaAtendidos = 0;
     ufs : UF[];
     dados_da_samu : Dados[];
 
-    constructor(private ufService: UFService, private samuService: SamuService)
+    constructor(private ufService: UFService, private samuService: SamuService, private allService: AllService)
     {
 
     }
@@ -38,7 +40,7 @@ export class AllComponent implements OnInit {
         this.area = String(this.ufService.getPorID(this.id).area);
         this.minha_UF = this.ufService.getPorID(this.id);
         this.mediaAtendidos = this.samuService.getMedia(this.id);
-        this.valores = this.samuService.getPorUFMunicipiosAtendidosPorEstado(this.minha_UF);
+        this.valores = this.allService.getTudo();
 
     }
 

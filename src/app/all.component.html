@@ -1,11 +1,5 @@
 <!--The whole content below can be removed with the new code.-->
 
 <div style="text-align:center" class="title">
-<details>
-    <h3>ID:{{uf_id}}</h3>
-    <h3>Área: {{area}} Km²</h3>
-    <h3>Média de municípios atendidos: {{mediaAtendidos}}</h3>
-
-  </details>
-      <li *ngFor="let valor of valores"><span class='ano'> {{valor.ano}}</span> {{valor.valor}}<li>
+      <table  border="1"><tr *ngFor="let valor of valores"> <td>{{valor.uf.nome}}</td> <td>{{valor.ano}}</td> <td>{{valor.valor}}</td></tr></table>
 </div>

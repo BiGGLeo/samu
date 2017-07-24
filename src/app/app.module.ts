@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule }   from '@angular/router';
+import { HttpModule } from '@angular/http';
 
 import { UFService } from './services/uf.service';
 import { SamuService } from './services/samu.service';
+import { AllService } from './services/all';
 
 import { AppComponent } from './app.component';
 import { AllComponent } from './all.component';
@@ -35,7 +37,7 @@ import { ResumoComponent} from './resumo.component';
 
     ])
   ],
-  providers: [UFService, SamuService],
+  providers: [UFService, SamuService, AllService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
