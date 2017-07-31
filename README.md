@@ -1,6 +1,6 @@
 # SAMU Avaliação prática de TII-POS
 
-## Heroku: https://samu-leon.herokuapp.com/
+## Heroku: https://thawing-oasis-59775.herokuapp.com/
 
 ## Objetivo
 
