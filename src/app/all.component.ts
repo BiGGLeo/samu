@@ -31,13 +31,16 @@ export class AllComponent implements OnInit {
 
     ngOnInit(): void {
         this.ufs = this.ufService.getAll();
-
+        this.dados_da_samu = this.samuService.getAllMunicipiosAtendidosPorEstado();
 
         //Começa aqui, na real
 
-        this.allService.getTudo().then( dados =>
-        this.valores = dados);
-}
+        this.title = this.ufService.getPorID(this.id).nome;
+        this.uf_id = String(this.ufService.getPorID(this.id).id);
+        this.area = String(this.ufService.getPorID(this.id).area);
+        this.minha_UF = this.ufService.getPorID(this.id);
+        this.mediaAtendidos = this.samuService.getMedia(this.id);
+        this.valores = this.allService.getTudo();
 
     }
 
@@ -46,4 +49,4 @@ export class AllComponent implements OnInit {
 
 
 
-    
+    }

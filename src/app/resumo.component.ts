@@ -30,14 +30,14 @@ export class ResumoComponent implements OnInit {
 
     ngOnInit(): void {
         this.ufs = this.ufService.getAll();
-        this.samuService.getAllMunicipiosAtendidosPorEstado().then(dados_da_samu => this.dados_da_samu = dados_da_samu);
+        this.dados_da_samu = this.samuService.getAllMunicipiosAtendidosPorEstado();
 
         //Tem que fazer esses 3 aqui
 
         this.title = this.ufService.getPorID(this.id).nome;
         this.uf_id = String(this.ufService.getPorID(this.id).id);
         this.area = String(this.ufService.getPorID(this.id).area);
-        this.samuService.getPorUFMunicipiosAtendidosPorEstadoPromise(this.id).then(dados_da_samu => this.mediaAtendidos = this.samuService.getMedia(dados_da_samu));
+        this.mediaAtendidos = this.samuService.getMedia(this.id);
 
     }
 
