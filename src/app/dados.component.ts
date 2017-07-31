@@ -29,11 +29,11 @@ export class DadosComponent implements OnInit {
 
     ngOnInit(): void {
         this.ufs = this.ufService.getAll();
-        this.dados_da_samu = this.samuService.getAllMunicipiosAtendidosPorEstado();
+        this.samuService.getAllMunicipiosAtendidosPorEstado().then(dados_da_samu => this.dados_da_samu = dados_da_samu);
 
         //Começa aqui, na real
         this.minha_UF = this.ufService.getPorID(this.id);
-        this.valores = this.samuService.getPorUFMunicipiosAtendidosPorEstado(this.minha_UF);
+        this.samuService.getPorUFMunicipiosAtendidosPorEstadoPromise(this.id).then(dados => this.valores = dados);
 
     }
 

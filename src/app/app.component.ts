@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
     title = 'app';
     id = 29;
     uf_id = '';
+    media= 0;
     area= '';
     minha_UF: UF;
     valores: Dados[];
@@ -30,16 +31,12 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         this.ufs = this.ufService.getAll();
-        this.dados_da_samu = this.samuService.getAllMunicipiosAtendidosPorEstado();
+        this.samuService.getAllMunicipiosAtendidosPorEstado().then(dados_da_samu => this.dados_da_samu = dados_da_samu);
 
         //Começa aqui, na real
 
         this.title = this.ufService.getPorID(this.id).nome;
-        this.uf_id = String(this.ufService.getPorID(this.id).id);
-        this.area = String(this.ufService.getPorID(this.id).area);
-        this.minha_UF = this.ufService.getPorID(this.id);
-        this.mediaAtendidos = this.samuService.getMedia(this.id);
-        this.valores = this.samuService.getPorUFMunicipiosAtendidosPorEstado(this.minha_UF);
+
 
     }
 
